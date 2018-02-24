@@ -1,4 +1,4 @@
-package cz.vutbr.fit.stud.xscesn00;
+package cz.vutbr.fit.stud.xscesn00.Container;
 
 import java.io.*;
 import java.util.ArrayList;

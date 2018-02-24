@@ -1,12 +1,17 @@
 package cz.vutbr.fit.stud.xscesn00;
 
+import cz.vutbr.fit.stud.xscesn00.Container.Container;
+
 public class Main {
 
     private static final String OUTPUT_FILE = "objects.out";
 
     public static void main(String[] args) {
+        System.out.println("Starting...");
+    }
 
-        // Create new object and initializing.
+    public void createObject() {
+        // Create testing object.
         TestingObject testingObject = new TestingObject();
         testingObject.setStartingPos(0);
         testingObject.setFinishingPos(10);
@@ -19,8 +24,11 @@ public class Main {
         container.setFile(OUTPUT_FILE);
         container.addObject(testingObject);
         container.onComplete();
+    }
 
+    public void loadObject() {
         // Load objects.
+        Container container = new Container();
         container.isFirstRun(false);
         container.loadFile(OUTPUT_FILE);
         container.onContinue();
@@ -30,5 +38,6 @@ public class Main {
         newTestingObject.setFinishingPos(20);
 
         newTestingObject.compute();
+
     }
 }
