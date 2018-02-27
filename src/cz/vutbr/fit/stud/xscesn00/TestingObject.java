@@ -6,6 +6,25 @@ public class TestingObject implements Serializable {
 
     private int mStartingPos;
     private int mFinishingPos;
+    private AnotherTestingObject testingObject;
+
+    public void initTestingObject(int counter) {
+        testingObject = new AnotherTestingObject();
+        testingObject.setState(AnotherTestingObject.State.INIT);
+        testingObject.setCounter(counter);
+    }
+
+    public void pauseTestingObject(int counter) {
+        int actualCounter = testingObject.getCounter();
+        testingObject.setState(AnotherTestingObject.State.WAITING);
+        testingObject.setCounter(actualCounter + counter);
+    }
+
+    public void finishTestingObject(int counter) {
+        int actualCounter = testingObject.getCounter();
+        testingObject.setState(AnotherTestingObject.State.COMPLETE);
+        testingObject.setCounter(actualCounter + counter);
+    }
 
     public int getStartingPos() {
         return mStartingPos;

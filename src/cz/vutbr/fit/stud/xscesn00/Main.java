@@ -25,17 +25,21 @@ public class Main {
     private static void initObjects() {
         object = new TestingObject();
         container = new Container();
+        object.initTestingObject(getNumberOfStarts());
     }
 
     private static void compute() {
-        if (getNumberOfStarts() == 1) {
+        int numberOfStarts = getNumberOfStarts();
+        if (numberOfStarts == 1) {
             object.setStartingPos(0);
             object.setFinishingPos(10);
+            object.initTestingObject(numberOfStarts);
         } else {
             int startPos = object.getStartingPos() + 10;
             int finPos = object.getFinishingPos() + 10;
             object.setStartingPos(startPos);
             object.setFinishingPos(finPos);
+            object.pauseTestingObject(numberOfStarts);
         }
         object.compute();
     }
@@ -57,6 +61,11 @@ public class Main {
     }
 
     private static boolean isComplete() {
-        return getNumberOfStarts() == 10;
+        int numberOfStarts = getNumberOfStarts();
+        if (numberOfStarts == 10) {
+            object.finishTestingObject(numberOfStarts);
+            return true;
+        }
+        return false;
     }
 }
