@@ -52,7 +52,6 @@ public class Container implements IContainer {
         System.out.println(TAG + "loadObject(): loadObject " + objectClass);
 
         for (Object object : mInObjects) {
-            System.out.println(TAG + "loadObject(): obj" + object);
             if (objectClass.isInstance(object)) {
                 return object;
             }
@@ -91,7 +90,6 @@ public class Container implements IContainer {
 
         mIsFirstRun = isFirstRun;
         mNumberOfStarts = 0;
-//        mOutObjects.add(mNumberOfStarts);
     }
 
     /**
@@ -142,7 +140,7 @@ public class Container implements IContainer {
         System.out.println(TAG + "onNext()");
 
         try {
-            mOutputStream.writeInt(mNumberOfStarts++);
+            mOutputStream.writeInt(++mNumberOfStarts);
             mOutputStream.writeObject(mOutObjects);
             mOutObjects.clear();
         } catch (IOException e) {
@@ -155,15 +153,11 @@ public class Container implements IContainer {
      */
     @Override
     public void onContinue() {
-        System.out.println(TAG + "onContinue()");
+        System.out.println(TAG + "onContinue() ");
 
         try {
             mNumberOfStarts = mInputStream.readInt();
-//            System.out.println(TAG + "Loaded int: " + mInputStream.readInt() + " saved num " + mNumberOfStarts);
-            mInObjects.clear();
             mInObjects = (ArrayList<Object>) mInputStream.readObject();
-//            mNumberOfStarts = (int) mInObjects.get(0);
-
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -184,13 +178,14 @@ public class Container implements IContainer {
      * @return integer
      */
     public int getNumberOfStarts() {
+        System.out.println(TAG + "getNumberOfStarts(): " + mNumberOfStarts);
         return mNumberOfStarts;
     }
 
     /**
      * Set number of starts and jobs done with objects.
      *
-     * @param numberOfStarts
+     * @param numberOfStarts number of starts.
      */
     public void setNumberOfStarts(int numberOfStarts) {
         mNumberOfStarts = numberOfStarts;

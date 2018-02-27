@@ -4,8 +4,8 @@ import cz.vutbr.fit.stud.xscesn00.Container.Container;
 
 public class Main {
 
-    static TestingObject object;
-    static Container container;
+    private static TestingObject object;
+    private static Container container;
 
     private static final String OUTPUT_FILE = "objects.out";
 
@@ -14,7 +14,6 @@ public class Main {
         initObjects();
         container.isFirstRun(true);
         while (!isComplete()) {
-            System.out.println("Number of starts: " + getNumberOfStarts());
             if (getNumberOfStarts() != 0) {
                 loadObject();
             }
@@ -23,14 +22,13 @@ public class Main {
         }
     }
 
-    public static void initObjects() {
+    private static void initObjects() {
         object = new TestingObject();
         container = new Container();
     }
 
-    public static void compute() {
-        System.out.println("Compute(): Number of starts: " + getNumberOfStarts());
-        if (getNumberOfStarts() == 0) {
+    private static void compute() {
+        if (getNumberOfStarts() == 1) {
             object.setStartingPos(0);
             object.setFinishingPos(10);
         } else {
@@ -42,26 +40,23 @@ public class Main {
         object.compute();
     }
 
-    public static void saveObject() {
+    private static void saveObject() {
         container.setFile(OUTPUT_FILE);
         container.addObject(object);
         container.onNext();
     }
 
-    public static void loadObject() {
+    private static void loadObject() {
         container.loadFile(OUTPUT_FILE);
         container.onContinue();
         object = (TestingObject) container.loadObject(TestingObject.class);
     }
 
-    public static int getNumberOfStarts() {
+    private static int getNumberOfStarts() {
         return container.getNumberOfStarts();
     }
 
-    public static boolean isComplete() {
-        if (getNumberOfStarts() == 10) {
-            return true;
-        }
-        return false;
+    private static boolean isComplete() {
+        return getNumberOfStarts() == 10;
     }
 }
