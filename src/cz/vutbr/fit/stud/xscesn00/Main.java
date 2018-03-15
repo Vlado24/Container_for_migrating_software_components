@@ -25,12 +25,11 @@ public class Main {
     private static void initObjects() {
         object = new TestingObject();
         container = new Container();
-        object.initTestingObject(getNumberOfStarts());
     }
 
     private static void compute() {
         int numberOfStarts = getNumberOfStarts();
-        if (numberOfStarts == 1) {
+        if (numberOfStarts == 0) {
             object.setStartingPos(0);
             object.setFinishingPos(10);
             object.initTestingObject(numberOfStarts);
@@ -39,7 +38,12 @@ public class Main {
             int finPos = object.getFinishingPos() + 10;
             object.setStartingPos(startPos);
             object.setFinishingPos(finPos);
-            object.pauseTestingObject(numberOfStarts);
+            if (object.getTestingObject() == null) {
+                System.out.println("=== !!! === Object was no saved, current value of the object: "
+                        + object.getTestingObject() + " === !!! ===");
+            } else {
+                object.pauseTestingObject(numberOfStarts);
+            }
         }
         object.compute();
     }
@@ -63,7 +67,9 @@ public class Main {
     private static boolean isComplete() {
         int numberOfStarts = getNumberOfStarts();
         if (numberOfStarts == 10) {
-            object.finishTestingObject(numberOfStarts);
+            if (object.getTestingObject() != null) {
+                object.finishTestingObject(numberOfStarts);
+            }
             return true;
         }
         return false;

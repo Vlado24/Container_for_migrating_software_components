@@ -1,12 +1,17 @@
 package cz.vutbr.fit.stud.xscesn00;
 
+import java.beans.Transient;
 import java.io.Serializable;
 
 public class TestingObject implements Serializable {
 
     private int mStartingPos;
     private int mFinishingPos;
-    private AnotherTestingObject testingObject;
+    private transient AnotherTestingObject testingObject;
+
+    public AnotherTestingObject getTestingObject() {
+        return testingObject;
+    }
 
     public void initTestingObject(int counter) {
         testingObject = new AnotherTestingObject();
