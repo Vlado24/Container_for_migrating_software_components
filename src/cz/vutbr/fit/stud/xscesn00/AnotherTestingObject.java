@@ -12,24 +12,24 @@ public class AnotherTestingObject implements Serializable {
         COMPLETE
     }
 
-    private State mState;
-    private int mCounter;
+    private State state;
+    private int counter;
 
     public State getState() {
-        return mState;
+        return state;
     }
 
     public void setState(State state) {
         System.out.println(TAG + "State: " + state);
-        mState = state;
+        this.state = state;
     }
 
     public int getCounter() {
-        return mCounter;
+        return counter;
     }
 
     public void setCounter(int counter) {
         System.out.println(TAG + "Counter " + counter);
-        mCounter = counter;
+        this.counter = counter;
     }
 }

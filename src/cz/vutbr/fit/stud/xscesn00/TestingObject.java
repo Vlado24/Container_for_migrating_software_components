@@ -1,12 +1,11 @@
 package cz.vutbr.fit.stud.xscesn00;
 
-import java.beans.Transient;
 import java.io.Serializable;
 
 public class TestingObject implements Serializable {
 
-    private int mStartingPos;
-    private int mFinishingPos;
+    private int startingPos;
+    private int finishingPos;
     private transient AnotherTestingObject testingObject;
 
     public AnotherTestingObject getTestingObject() {
@@ -32,23 +31,23 @@ public class TestingObject implements Serializable {
     }
 
     public int getStartingPos() {
-        return mStartingPos;
+        return startingPos;
     }
 
     public void setStartingPos(int startingPos) {
-        mStartingPos = startingPos;
+        this.startingPos = startingPos;
     }
 
     public int getFinishingPos() {
-        return mFinishingPos;
+        return finishingPos;
     }
 
     public void setFinishingPos(int finishingPos) {
-        mFinishingPos = finishingPos;
+        this.finishingPos = finishingPos;
     }
 
     public void compute() {
-        for (int i = mStartingPos; i <= mFinishingPos; i++) {
+        for (int i = startingPos; i <= finishingPos; i++) {
             System.out.println("Compute: i = " + i);
         }
     }
