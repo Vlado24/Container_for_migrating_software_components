@@ -1,11 +1,11 @@
-package cz.vutbr.fit.stud.xscesn00;
+package cz.vutbr.fit.stud.xscesn00test;
 
 import java.io.Serializable;
 
 public class TestingObject implements Serializable {
 
-    private int startingPos;
-    private int finishingPos;
+    private int startingPos = 0;
+    private int finishingPos = 10;
     private transient AnotherTestingObject testingObject;
 
     public AnotherTestingObject getTestingObject() {

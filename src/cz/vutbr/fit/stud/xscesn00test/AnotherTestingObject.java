@@ -1,4 +1,4 @@
-package cz.vutbr.fit.stud.xscesn00;
+package cz.vutbr.fit.stud.xscesn00test;
 
 import java.io.Serializable;
 

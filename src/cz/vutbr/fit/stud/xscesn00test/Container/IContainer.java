@@ -1,9 +1,10 @@
-package cz.vutbr.fit.stud.xscesn00.Container;
+package cz.vutbr.fit.stud.xscesn00test.Container;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public interface IContainer {
+public interface IContainer extends Serializable {
 
     void addObject(Object object);
 
@@ -13,7 +14,7 @@ public interface IContainer {
 
     ArrayList<Object> loadObjects(Class objects);
 
-    void isFirstRun(Boolean isFirstRun);
+//    void isFirstRun(Boolean isFirstRun);
 
     void loadFile(String file);
 
@@ -24,4 +25,8 @@ public interface IContainer {
     void onContinue();
 
     void onComplete();
+
+    void onResumeContainer(String filePath);
+
+    void onSuspendContainer(String filePath);
 }
