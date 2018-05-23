@@ -1,0 +1,5 @@
+Django==1.11
+djangorestframework==3.8.2
+django-rest-swagger==2.2.0
+fcm-django==0.2.18
+django-pipeline==1.6.14

@@ -1,0 +1,7 @@
+*.pyc
+__pycache__/
+*.pem
+db.sqlite3
+/static
+celerybeat-schedule
+/media
