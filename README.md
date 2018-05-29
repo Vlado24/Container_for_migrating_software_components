@@ -12,8 +12,36 @@ You can find the fullscript of these thesis [here](https://github.com/Vlado24/Co
 * [Container Demo - simple example of using component/manager/container written in Android](#demo-application)
 * [Test input - Bubble sort .jar and .dex file](#test-input)
 
+## How to run
+TODO
+
 ## Container
-TODO - Reflection and objects serialiation.
+The main module responsible for running computation on Android. It uses **reflection** and **object's serialization** for resuming and pausing computation. It also implements AsyncTask for running computation on background thread. This AsyncTask implement `sleep()` method for testing purpose and you can delete it.
+
+You can run container in your application like this:
+1. [Download container](https://github.com/Vlado24/Container_for_migrating_software_components/tree/master/androidcontainer) and [add it to your project](https://github.com/MagicMicky/FreemiumLibrary/wiki/Import-the-library-in-Android-Studio)
+2. Add it into your Activity or Service:
+
+```java
+  AndroidContainer container;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    container = new AndroidContainer();
+  }
+  
+  @Override
+  protected void onResume() {
+     container.onContainerCreate(getApplicationContext(), classToLoad, dexPath, outPath);
+     container.onContainerResume();
+  }
+  
+  @Override
+  protected void onPause() {
+     container.onContainerSuspend();
+  }
+```
+
 
 ## Component
 To run component on Android device using Android Container, you need to implement **wrapper for encapsulating computation** and **this methods**:
